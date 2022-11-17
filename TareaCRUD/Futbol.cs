@@ -27,28 +27,31 @@ namespace TareaCRUD
 
             entradas.Add(nombreEquipoTextBox);
             entradas.Add(confederacionComboBox);
-            entradas.Add(numParticionesNumerico);
+            entradas.Add(numParticipacionesNumerico);
             entradas.Add(federadosNumerico);
 
 
         }
 
-        private void registrarEquipoButton_Click(object sender, EventArgs e)
+        private bool entradaVacia()
         {
-
             foreach (Control entrada in entradas)
             {
-                if (string.IsNullOrWhiteSpace(entrada.Text))
-                {
-                    MessageBox.Show("No puedes dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                if (string.IsNullOrWhiteSpace(entrada.Text)) return true;
             }
+
+            return false;
+        }
+
+        private void registrarEquipoButton_Click(object sender, EventArgs e)
+        {
+            if (entradaVacia()) MessageBox.Show("No puedes dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 
 
             string nombreEquipo = nombreEquipoTextBox.Text.ToUpper().Trim();
             string confederacion = confederacionComboBox.Text;
-            int numParticipacionesMundial = (int)numParticionesNumerico.Value;
+            int numParticipacionesMundial = (int)numParticipacionesNumerico.Value;
             int numJugadoresFederados = (int)federadosNumerico.Value;
 
             EquipoFutbol nuevoEquipo = new EquipoFutbol(nombreEquipo, confederacion, numParticipacionesMundial, numJugadoresFederados);
@@ -80,24 +83,76 @@ namespace TareaCRUD
 
         private void actualizarEquipoButton_Click(object sender, EventArgs e)
         {
+
+            if (entradaVacia()) MessageBox.Show("No puedes dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             foreach (EquipoFutbol equipoRegistrado in EquiposFutbol)
             {
-                if (equipoRegistrado.NombreEquipo == nombreEquipoTextBox.Text)
+                string nombreEquipo = nombreEquipoTextBox.Text.ToUpper().Trim();
+                string confederacion = confederacionComboBox.Text;
+                int numParticipacionesMundial = (int)numParticipacionesNumerico.Value;
+                int numJugadoresFederados = (int)federadosNumerico.Value;
+
+                if (equipoRegistrado.NombreEquipo == nombreEquipo && equipoRegistrado.Confederacion == confederacion && 
+                    equipoRegistrado.NumParticipaciones == numParticipacionesMundial && equipoRegistrado.NumFederados == numJugadoresFederados)
                 {
-                    EquiposFutbol.Remove(equipoRegistrado);
-                    string nombreEquipo = nombreEquipoTextBox.Text.ToUpper().Trim();
-                    string confederacion = confederacionComboBox.Text;
-                    int numParticipacionesMundial = (int)numParticionesNumerico.Value;
-                    int numJugadoresFederados = (int)federadosNumerico.Value;
+                    MessageBox.Show("Los datos previos son los mismos que los datos nuevos. Cambie alguno de los valores de los campos e intente nuevamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (equipoRegistrado.NombreEquipo == nombreEquipo)
+                {
+                    EquiposFutbol = EquiposFutbol.Where(equipo => equipo.NombreEquipo != nombreEquipo).ToList();
+                    
 
                     EquipoFutbol nuevoEquipo = new EquipoFutbol(nombreEquipo, confederacion, numParticipacionesMundial, numJugadoresFederados);
                     EquiposFutbol.Add(nuevoEquipo);
                     MessageBox.Show("Equipo actualizado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiarEntradas();
                     return;
                 }
             }
 
             MessageBox.Show("No se encontró al equipo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void buscarEquipoButton_Click(object sender, EventArgs e)
+        {
+            string nombreEquipo = nombreEquipoTextBox.Text.ToUpper().Trim();
+            EquipoFutbol equipoBuscado = EquiposFutbol.SingleOrDefault(equipo => equipo.NombreEquipo == nombreEquipo, new EquipoFutbol("", "", 0, 0));
+
+            if (string.IsNullOrWhiteSpace(equipoBuscado.NombreEquipo))
+            {
+                MessageBox.Show($"El equipo llamado \"{nombreEquipo}\" no pudo ser encontrado");
+                return;
+            }
+
+            nombreEquipoTextBox.Text = equipoBuscado.NombreEquipo;
+            confederacionComboBox.Text = equipoBuscado.Confederacion;
+            numParticipacionesNumerico.Text = equipoBuscado.NumParticipaciones.ToString();
+            federadosNumerico.Text = equipoBuscado.NumFederados.ToString();
+        }
+
+        private void eliminarEquipoButton_Click(object sender, EventArgs e)
+        {
+            foreach (EquipoFutbol equipoRegistrado in EquiposFutbol)
+            {
+                string nombreEquipo = nombreEquipoTextBox.Text.ToUpper().Trim();
+                if (equipoRegistrado.NombreEquipo == nombreEquipo)
+                {
+                    EquiposFutbol = EquiposFutbol.Where(equipo => equipo.NombreEquipo != nombreEquipo).ToList();
+                    string confederacion = confederacionComboBox.Text;
+                    int numParticipacionesMundial = (int)numParticipacionesNumerico.Value;
+                    int numJugadoresFederados = (int)federadosNumerico.Value;
+
+                    EquipoFutbol nuevoEquipo = new EquipoFutbol(nombreEquipo, confederacion, numParticipacionesMundial, numJugadoresFederados);
+                    MessageBox.Show("Equipo Eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiarEntradas();
+                    return;
+                }
+            }
+
+            MessageBox.Show("No se encontró al equipo a eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

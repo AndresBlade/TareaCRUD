@@ -32,7 +32,7 @@
             this.nombreEquipoTextBox = new System.Windows.Forms.TextBox();
             this.confederacionLabel = new System.Windows.Forms.Label();
             this.confederacionComboBox = new System.Windows.Forms.ComboBox();
-            this.numParticionesNumerico = new System.Windows.Forms.NumericUpDown();
+            this.numParticipacionesNumerico = new System.Windows.Forms.NumericUpDown();
             this.numParticipacioneslabel = new System.Windows.Forms.Label();
             this.federadosLabel = new System.Windows.Forms.Label();
             this.federadosNumerico = new System.Windows.Forms.NumericUpDown();
@@ -40,7 +40,7 @@
             this.registrarEquipoButton = new System.Windows.Forms.Button();
             this.actualizarEquipoButton = new System.Windows.Forms.Button();
             this.eliminarEquipoButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numParticionesNumerico)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numParticipacionesNumerico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.federadosNumerico)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,12 +85,12 @@
             this.confederacionComboBox.Size = new System.Drawing.Size(215, 33);
             this.confederacionComboBox.TabIndex = 3;
             // 
-            // numParticionesNumerico
+            // numParticipacionesNumerico
             // 
-            this.numParticionesNumerico.Location = new System.Drawing.Point(280, 162);
-            this.numParticionesNumerico.Name = "numParticionesNumerico";
-            this.numParticionesNumerico.Size = new System.Drawing.Size(286, 31);
-            this.numParticionesNumerico.TabIndex = 4;
+            this.numParticipacionesNumerico.Location = new System.Drawing.Point(280, 162);
+            this.numParticipacionesNumerico.Name = "numParticipacionesNumerico";
+            this.numParticipacionesNumerico.Size = new System.Drawing.Size(286, 31);
+            this.numParticipacionesNumerico.TabIndex = 4;
             // 
             // numParticipacioneslabel
             // 
@@ -126,6 +126,7 @@
             this.buscarEquipoButton.TabIndex = 8;
             this.buscarEquipoButton.Text = "?";
             this.buscarEquipoButton.UseVisualStyleBackColor = true;
+            this.buscarEquipoButton.Click += new System.EventHandler(this.buscarEquipoButton_Click);
             // 
             // registrarEquipoButton
             // 
@@ -155,6 +156,7 @@
             this.eliminarEquipoButton.TabIndex = 11;
             this.eliminarEquipoButton.Text = "Eliminar";
             this.eliminarEquipoButton.UseVisualStyleBackColor = true;
+            this.eliminarEquipoButton.Click += new System.EventHandler(this.eliminarEquipoButton_Click);
             // 
             // Futbol
             // 
@@ -169,14 +171,14 @@
             this.Controls.Add(this.federadosLabel);
             this.Controls.Add(this.federadosNumerico);
             this.Controls.Add(this.numParticipacioneslabel);
-            this.Controls.Add(this.numParticionesNumerico);
+            this.Controls.Add(this.numParticipacionesNumerico);
             this.Controls.Add(this.confederacionComboBox);
             this.Controls.Add(this.confederacionLabel);
             this.Controls.Add(this.nombreEquipoTextBox);
             this.Controls.Add(this.nombreEquipoLabel);
             this.Name = "Futbol";
             this.Text = "Equipo de Fútbol";
-            ((System.ComponentModel.ISupportInitialize)(this.numParticionesNumerico)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numParticipacionesNumerico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.federadosNumerico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -189,7 +191,7 @@
         private TextBox nombreEquipoTextBox;
         private Label confederacionLabel;
         private ComboBox confederacionComboBox;
-        private NumericUpDown numParticionesNumerico;
+        private NumericUpDown numParticipacionesNumerico;
         private Label numParticipacioneslabel;
         private Label federadosLabel;
         private NumericUpDown federadosNumerico;
