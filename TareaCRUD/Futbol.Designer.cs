@@ -40,8 +40,15 @@
             this.registrarEquipoButton = new System.Windows.Forms.Button();
             this.actualizarEquipoButton = new System.Windows.Forms.Button();
             this.eliminarEquipoButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.reiniciarButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numParticipacionesNumerico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.federadosNumerico)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // nombreEquipoLabel
@@ -119,44 +126,111 @@
             // 
             // buscarEquipoButton
             // 
+            this.buscarEquipoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.buscarEquipoButton.Cursor = System.Windows.Forms.Cursors.Help;
+            this.buscarEquipoButton.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.buscarEquipoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarEquipoButton.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.buscarEquipoButton.Location = new System.Drawing.Point(267, 50);
             this.buscarEquipoButton.Name = "buscarEquipoButton";
             this.buscarEquipoButton.Size = new System.Drawing.Size(65, 65);
             this.buscarEquipoButton.TabIndex = 8;
             this.buscarEquipoButton.Text = "?";
-            this.buscarEquipoButton.UseVisualStyleBackColor = true;
+            this.buscarEquipoButton.UseVisualStyleBackColor = false;
             this.buscarEquipoButton.Click += new System.EventHandler(this.buscarEquipoButton_Click);
             // 
             // registrarEquipoButton
             // 
-            this.registrarEquipoButton.Location = new System.Drawing.Point(106, 252);
+            this.registrarEquipoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.registrarEquipoButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.registrarEquipoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registrarEquipoButton.Location = new System.Drawing.Point(57, 248);
             this.registrarEquipoButton.Name = "registrarEquipoButton";
             this.registrarEquipoButton.Size = new System.Drawing.Size(112, 34);
             this.registrarEquipoButton.TabIndex = 9;
             this.registrarEquipoButton.Text = "Registrar";
-            this.registrarEquipoButton.UseVisualStyleBackColor = true;
+            this.registrarEquipoButton.UseVisualStyleBackColor = false;
             this.registrarEquipoButton.Click += new System.EventHandler(this.registrarEquipoButton_Click);
             // 
             // actualizarEquipoButton
             // 
-            this.actualizarEquipoButton.Location = new System.Drawing.Point(348, 252);
+            this.actualizarEquipoButton.BackColor = System.Drawing.Color.Fuchsia;
+            this.actualizarEquipoButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.actualizarEquipoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.actualizarEquipoButton.Location = new System.Drawing.Point(249, 248);
             this.actualizarEquipoButton.Name = "actualizarEquipoButton";
             this.actualizarEquipoButton.Size = new System.Drawing.Size(112, 34);
             this.actualizarEquipoButton.TabIndex = 10;
             this.actualizarEquipoButton.Text = "Actualizar";
-            this.actualizarEquipoButton.UseVisualStyleBackColor = true;
+            this.actualizarEquipoButton.UseVisualStyleBackColor = false;
             this.actualizarEquipoButton.Click += new System.EventHandler(this.actualizarEquipoButton_Click);
             // 
             // eliminarEquipoButton
             // 
-            this.eliminarEquipoButton.Location = new System.Drawing.Point(590, 252);
+            this.eliminarEquipoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.eliminarEquipoButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.eliminarEquipoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eliminarEquipoButton.Location = new System.Drawing.Point(441, 248);
             this.eliminarEquipoButton.Name = "eliminarEquipoButton";
             this.eliminarEquipoButton.Size = new System.Drawing.Size(112, 34);
             this.eliminarEquipoButton.TabIndex = 11;
             this.eliminarEquipoButton.Text = "Eliminar";
-            this.eliminarEquipoButton.UseVisualStyleBackColor = true;
+            this.eliminarEquipoButton.UseVisualStyleBackColor = false;
             this.eliminarEquipoButton.Click += new System.EventHandler(this.eliminarEquipoButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TareaCRUD.Properties.Resources.messi;
+            this.pictureBox1.Location = new System.Drawing.Point(62, 292);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(260, 146);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::TareaCRUD.Properties.Resources.cristiano;
+            this.pictureBox2.Location = new System.Drawing.Point(435, 302);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(244, 136);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Heavy", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(364, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(393, 36);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Maneje los equipos de fútbol";
+            // 
+            // reiniciarButton
+            // 
+            this.reiniciarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.reiniciarButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.reiniciarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reiniciarButton.Location = new System.Drawing.Point(633, 248);
+            this.reiniciarButton.Name = "reiniciarButton";
+            this.reiniciarButton.Size = new System.Drawing.Size(112, 34);
+            this.reiniciarButton.TabIndex = 15;
+            this.reiniciarButton.Text = "Reiniciar";
+            this.reiniciarButton.UseVisualStyleBackColor = false;
+            this.reiniciarButton.Click += new System.EventHandler(this.reiniciarButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(50, 215);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(517, 30);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Nota: los campos numéricos reescribirán automáticamente valores negativos, dándol" +
+    "es el valor 0\r\n\r\n";
             // 
             // Futbol
             // 
@@ -164,6 +238,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(182)))), ((int)(((byte)(182)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.reiniciarButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.eliminarEquipoButton);
             this.Controls.Add(this.actualizarEquipoButton);
             this.Controls.Add(this.registrarEquipoButton);
@@ -180,6 +259,8 @@
             this.Text = "Equipo de Fútbol";
             ((System.ComponentModel.ISupportInitialize)(this.numParticipacionesNumerico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.federadosNumerico)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,5 +280,10 @@
         private Button registrarEquipoButton;
         private Button actualizarEquipoButton;
         private Button eliminarEquipoButton;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label label1;
+        private Button reiniciarButton;
+        private Label label2;
     }
 }

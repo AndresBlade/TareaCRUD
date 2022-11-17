@@ -41,6 +41,8 @@
             // tituloPrincipal
             // 
             this.tituloPrincipal.AutoSize = true;
+            this.tituloPrincipal.BackColor = System.Drawing.Color.Transparent;
+            this.tituloPrincipal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tituloPrincipal.Location = new System.Drawing.Point(78, 210);
             this.tituloPrincipal.Name = "tituloPrincipal";
             this.tituloPrincipal.Size = new System.Drawing.Size(366, 25);
@@ -71,6 +73,7 @@
             // 
             // equipoDeFútbolToolStripMenuItem
             // 
+            this.equipoDeFútbolToolStripMenuItem.Image = global::TareaCRUD.Properties.Resources.football;
             this.equipoDeFútbolToolStripMenuItem.Name = "equipoDeFútbolToolStripMenuItem";
             this.equipoDeFútbolToolStripMenuItem.Size = new System.Drawing.Size(257, 34);
             this.equipoDeFútbolToolStripMenuItem.Text = "Equipo de Fútbol";
@@ -78,6 +81,7 @@
             // 
             // equipoDeBéisbolToolStripMenuItem
             // 
+            this.equipoDeBéisbolToolStripMenuItem.Image = global::TareaCRUD.Properties.Resources.ball;
             this.equipoDeBéisbolToolStripMenuItem.Name = "equipoDeBéisbolToolStripMenuItem";
             this.equipoDeBéisbolToolStripMenuItem.Size = new System.Drawing.Size(257, 34);
             this.equipoDeBéisbolToolStripMenuItem.Text = "Equipo de Béisbol";
@@ -85,6 +89,7 @@
             // 
             // saludoToolStripMenuItem
             // 
+            this.saludoToolStripMenuItem.Image = global::TareaCRUD.Properties.Resources.hello;
             this.saludoToolStripMenuItem.Name = "saludoToolStripMenuItem";
             this.saludoToolStripMenuItem.Size = new System.Drawing.Size(257, 34);
             this.saludoToolStripMenuItem.Text = "Saludo";
@@ -92,6 +97,7 @@
             // 
             // salirToolStripMenuItem
             // 
+            this.salirToolStripMenuItem.Image = global::TareaCRUD.Properties.Resources._381599_error_icon;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(257, 34);
             this.salirToolStripMenuItem.Text = "Salir";
@@ -101,6 +107,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
+            this.BackgroundImage = global::TareaCRUD.Properties.Resources.pngwing_com;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tituloPrincipal);
             this.Controls.Add(this.menuStrip1);

@@ -11,8 +11,26 @@ namespace TareaCRUD
 
         private void equipoDeFútbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool estado = false;
+
             Futbol formularioFutbol = new Futbol();
+
+            foreach (Form formulario in Application.OpenForms)
+            {
+                if (formulario.GetType() == typeof(Futbol))
+                {
+                    estado = true;
+                }
+            }
+
+            if (estado)
+            {
+                return;
+            }
+
+            
             formularioFutbol.Show();
+            
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,6 +48,22 @@ namespace TareaCRUD
         private void equipoDeBéisbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Beisbol formularioBeisbol = new Beisbol();
+
+            bool estado = false;
+
+            foreach (Form formulario in Application.OpenForms)
+            {
+                if (formulario.GetType() == typeof(Beisbol))
+                {
+                    estado = true;
+                }
+            }
+
+            if (estado)
+            {
+                return;
+            }
+
             formularioBeisbol.Show();
         }
     }

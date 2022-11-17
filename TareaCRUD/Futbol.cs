@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +25,8 @@ namespace TareaCRUD
             EquiposFutbol = new List<EquipoFutbol>();
 
             buscarEquipoButton.Font = new Font(FontFamily.GenericMonospace, 20, FontStyle.Bold);
+            confederacionComboBox.SelectedIndex= 0;
+            //actualizarEquipoButton.Enabled = false;
 
             entradas.Add(nombreEquipoTextBox);
             entradas.Add(confederacionComboBox);
@@ -45,14 +48,25 @@ namespace TareaCRUD
 
         private void registrarEquipoButton_Click(object sender, EventArgs e)
         {
-            if (entradaVacia()) MessageBox.Show("No puedes dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
+            if (entradaVacia())
+            {
+                MessageBox.Show("No puedes dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             string nombreEquipo = nombreEquipoTextBox.Text.ToUpper().Trim();
             string confederacion = confederacionComboBox.Text;
             int numParticipacionesMundial = (int)numParticipacionesNumerico.Value;
             int numJugadoresFederados = (int)federadosNumerico.Value;
+            int valor;
+
+            bool soloNumeros = int.TryParse(nombreEquipo, out valor );
+
+            if (soloNumeros)
+            {
+                MessageBox.Show("El nombre de un equipo no puede componerse de solo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             EquipoFutbol nuevoEquipo = new EquipoFutbol(nombreEquipo, confederacion, numParticipacionesMundial, numJugadoresFederados);
 
@@ -84,7 +98,13 @@ namespace TareaCRUD
         private void actualizarEquipoButton_Click(object sender, EventArgs e)
         {
 
-            if (entradaVacia()) MessageBox.Show("No puedes dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (entradaVacia())
+            {
+                MessageBox.Show("No puedes dejar campos vacíos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
 
             foreach (EquipoFutbol equipoRegistrado in EquiposFutbol)
             {
@@ -121,11 +141,19 @@ namespace TareaCRUD
             string nombreEquipo = nombreEquipoTextBox.Text.ToUpper().Trim();
             EquipoFutbol equipoBuscado = EquiposFutbol.SingleOrDefault(equipo => equipo.NombreEquipo == nombreEquipo, new EquipoFutbol("", "", 0, 0));
 
+            if (string.IsNullOrWhiteSpace(nombreEquipo))
+            {
+                MessageBox.Show("El nombre del equipo a buscar debe de especificarse");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(equipoBuscado.NombreEquipo))
             {
                 MessageBox.Show($"El equipo llamado \"{nombreEquipo}\" no pudo ser encontrado");
                 return;
             }
+
+            MessageBox.Show("Equipo encontrado exitosamente. Revise los datos del mismo.");
 
             nombreEquipoTextBox.Text = equipoBuscado.NombreEquipo;
             confederacionComboBox.Text = equipoBuscado.Confederacion;
@@ -153,6 +181,13 @@ namespace TareaCRUD
             }
 
             MessageBox.Show("No se encontró al equipo a eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void reiniciarButton_Click(object sender, EventArgs e)
+        {
+            EquiposFutbol.Clear();
+            limpiarEntradas();
+            MessageBox.Show("Reinicio realizado exitosamente", "Exito");
         }
     }
 }
